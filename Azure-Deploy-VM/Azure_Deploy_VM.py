@@ -1,4 +1,13 @@
-import os
+#####################################################################################
+# Deploy a VM to Azure
+# 
+# This program deploys a single VM to Azure.
+# 
+# Create a service principal in Azure and fill in the details in the variables below.
+#
+#####################################################################################
+
+
 import traceback
 
 from azure.common.credentials import ServicePrincipalCredentials
@@ -10,10 +19,6 @@ from azure.mgmt.compute.models import DiskCreateOption
 
 from msrestazure.azure_exceptions import CloudError
 
-from haikunator import Haikunator
-
-haikunator = Haikunator()
-
 # Set Azure variables
 LOCATION = 'westeurope'
 RESOURCE_GROUP = 'Python-Test'
@@ -22,17 +27,16 @@ VNET_ADDRESS_SPACE = '10.1.0.0/16'
 SUBNET_PREFIX = '10.1.0.0/24'
 SUBNET_NAME = 'Python-VNet-Subnet1'
 VM_NAME = 'Python-VM1'
-OS_DISK = 'osdisk1'
-STORAGE_ACCOUNT = haikunator.haikunate(delimiter = '')
 IP_CONFIG = 'ipconfig'
 NIC_NAME = VM_NAME + '-nic'
 VM_SIZE = 'Standard_A0'
 USERNAME = 'labuser'
 PASSWORD = 'M1crosoft123'
-AZURE_SUBSCRIPTION_ID = '7855847d-d89f-4bc7-93c4-59623eab44cd'
-AZURE_CLIENT_ID = '69e81861-af05-424c-89b7-d303e778d0b8'
+# Fill in these variables with the info from your service principal
+AZURE_SUBSCRIPTION_ID = '11111111-1111-1111-1111-111111111111'
+AZURE_CLIENT_ID = '22222222-2222-2222-2222-222222222222'
 AZURE_CLIENT_SECRET = 'M1crosoft123'
-AZURE_TENANT_ID = '72f988bf-86f1-41af-91ab-2d7cd011db47'
+AZURE_TENANT_ID = '33333333-3333-3333-3333-333333333333'
 
 
 VM_DETAILS = {
